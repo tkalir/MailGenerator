@@ -1,0 +1,48 @@
+html, body, #root {
+  height: 100%;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+  height: calc(100% - 4rem);
+  padding: 2rem;
+
+  background: brown;
+}
+
+main h1 {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.menu {
+  background: #daffd9;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.menu__block-button {
+  border: none;
+  width: 100%;
+  padding: 0.5rem 0;
+  background: #daffd9;
+}
+
+.menu__block-button:disabled {
+  background: #8bff8a;
+  color: black;
+}
+
+.menu__block-button:not(:disabled):hover {
+  background: #beffbd;
+}
+
+.quill {
+  max-height: 300px;
+  background: white;
+}
