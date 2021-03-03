@@ -1,4 +1,9 @@
-import { Action, setBlockTextType, selectBlockType } from "../actions";
+import {
+  Action,
+  setBlockTextType,
+  selectBlockType,
+  addBlockType,
+} from "../actions";
 
 export type State = {
   blocks: Block[];
@@ -31,19 +36,29 @@ function reducer(state: State = initialState, action: Action): State {
         (block: Block) => block.name === action.payload.blockName
       );
       if (blockIndex == -1) {
-        throw new Error(`Couldn't find block named ${action.payload.blockName}`)
+        throw new Error(
+          `Couldn't find block named ${action.payload.blockName}`
+        );
       }
       newState.blocks[blockIndex].text = action.payload.text;
 
       return newState;
     }
+
     case selectBlockType: {
-            return {...state, activeBlockName: action.payload.blockName}
-        }
+      return { ...state, activeBlockName: action.payload.blockName };
+    }
+
+    case addBlockType: {
+      return {
+        ...state,
+        blocks: [...state.blocks, { name: action.payload.blockName, text: "" }],
+      };
+    }
     default: {
-        return state;
-      }    
-}
+      return state;
+    }
+  }
 }
 
 export default reducer;

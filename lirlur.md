@@ -1,7 +1,7 @@
 # next steps
 
-- add new blocks
-- save state to local storage
+- make the menu pretty
+- do the thing
 
 # design
 

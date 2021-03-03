@@ -1,18 +1,19 @@
 import { connect } from "react-redux";
 import { State, Block } from "../reducers";
-import BlockMenuItem from './BlockMenuItem'
-import {selectBlock} from "../actions"
+import BlockMenuItem from "./BlockMenuItem";
+import { selectBlock } from "../actions";
+import NewBlockInput from "./NewBlockInput";
 
-  type StateProps = {
+type StateProps = {
   blocks: Block[];
   activeBlockName: string;
 };
 
 type ActionProps = {
-  selectBlock: (blockName: string) => void
-}
+  selectBlock: (blockName: string) => void;
+};
 
-type Props = StateProps & ActionProps
+type Props = StateProps & ActionProps;
 
 function mapStateToProps(state: State): StateProps {
   return { blocks: state.blocks, activeBlockName: state.activeBlockName };
@@ -20,11 +21,11 @@ function mapStateToProps(state: State): StateProps {
 
 const mapDispatchToProps = {
   selectBlock,
-  };
+};
 
 function Menu(props: Props) {
   return (
-    <div className='menu'>
+    <div className="menu">
       {props.blocks.map((block) => (
         <BlockMenuItem
           name={block.name}
@@ -32,7 +33,7 @@ function Menu(props: Props) {
           onClick={() => props.selectBlock(block.name)}
         />
       ))}
-      <button>+</button>
+      <NewBlockInput />
     </div>
   );
 }
